@@ -62,12 +62,34 @@
             align-items: center;
             z-index: 100;
             box-shadow: 0 2px 8px rgba(27, 67, 50, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, 
+                rgba(45, 106, 79, 0.12) 0%,
+                rgba(45, 106, 79, 0.06) 25%,
+                rgba(82, 183, 136, 0.04) 50%,
+                rgba(45, 106, 79, 0.06) 75%,
+                rgba(45, 106, 79, 0.12) 100%);
+            pointer-events: none;
+            z-index: -1;
+            animation: fadeFlow 4s ease-in-out infinite;
         }
 
         .logo {
             display: flex;
             flex-direction: column;
             gap: 2px;
+            position: relative;
+            z-index: 2;
         }
 
         .logo-english {
@@ -89,6 +111,8 @@
             display: flex;
             gap: 8px;
             align-items: center;
+            position: relative;
+            z-index: 2;
         }
 
         .nav-item {
@@ -169,15 +193,16 @@
         }
 
         .hero::after {
-            content: '🌿 🍃 🌱 🌾 🌳';
+            content: '🌍 📸 🎓 🌱';
             position: absolute;
-            bottom: 40px;
-            right: 60px;
-            font-size: 3rem;
-            opacity: 0.15;
+            bottom: 30px;
+            right: 40px;
+            font-size: 3.5rem;
+            opacity: 0.08;
             z-index: 1;
             animation: float 6s ease-in-out infinite;
-            letter-spacing: 20px;
+            letter-spacing: 15px;
+            font-weight: 800;
         }
 
         .hero-left {
@@ -265,6 +290,29 @@
             background: var(--pale-green);
             transform: translateY(-3px);
             color: var(--primary-dark-green);
+        }
+
+        .hero-picture-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+            background: linear-gradient(135deg, var(--pale-green) 0%, var(--soft-mint) 50%, var(--leaf-green) 100%);
+            clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 0% 100%);
+        }
+
+        .hero-picture-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 30% 20%, rgba(255,255,255,0.3) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(27,67,50,0.1) 0%, transparent 50%);
+            animation: shimmer 3s ease-in-out infinite;
         }
 
         .hero-right {
@@ -479,143 +527,7 @@
             animation: float 4s ease-in-out infinite;
         }
 
-        /* DOODLE SECTION */
-        .doodle-section {
-            background: linear-gradient(135deg, var(--pale-green) 0%, rgba(216, 243, 220, 0.6) 100%);
-            padding: 80px 32px;
-            margin-top: 60px;
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-        }
 
-        .doodle-container {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .doodle-title {
-            font-family: 'Noto Sans Malayalam', sans-serif;
-            font-size: 2rem;
-            color: var(--primary-dark-green);
-            margin-bottom: 24px;
-            font-weight: 800;
-        }
-
-        .doodle-subtitle {
-            font-size: 1.05rem;
-            color: var(--primary-green);
-            margin-bottom: 40px;
-            line-height: 1.8;
-        }
-
-        .doodles {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 24px;
-            margin-bottom: 40px;
-        }
-
-        .doodle {
-            font-size: 3.5rem;
-            opacity: 0;
-            animation: popIn 600ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-            cursor: pointer;
-            transition: transform 300ms ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .doodle:hover {
-            transform: scale(1.15) rotate(10deg);
-        }
-
-        .doodle:nth-child(1) { animation-delay: 100ms; }
-        .doodle:nth-child(2) { animation-delay: 200ms; }
-        .doodle:nth-child(3) { animation-delay: 300ms; }
-        .doodle:nth-child(4) { animation-delay: 400ms; }
-        .doodle:nth-child(5) { animation-delay: 500ms; }
-        .doodle:nth-child(6) { animation-delay: 600ms; }
-        .doodle:nth-child(7) { animation-delay: 700ms; }
-        .doodle:nth-child(8) { animation-delay: 800ms; }
-
-        .doodle-shapes {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 0;
-            opacity: 0.1;
-        }
-
-        .shape {
-            position: absolute;
-            opacity: 0.3;
-        }
-
-        .circle {
-            width: 60px;
-            height: 60px;
-            border: 3px solid var(--forest-green);
-            border-radius: 50%;
-            animation: spin 8s linear infinite;
-        }
-
-        .square {
-            width: 50px;
-            height: 50px;
-            border: 3px solid var(--leaf-green);
-            transform: rotate(45deg);
-            animation: bounce 4s ease-in-out infinite;
-        }
-
-        .triangle {
-            width: 0;
-            height: 0;
-            border-left: 30px solid transparent;
-            border-right: 30px solid transparent;
-            border-bottom: 50px solid var(--soft-mint);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .doodle-cta {
-            display: inline-block;
-            padding: 14px 32px;
-            background: var(--primary-green);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 700;
-            font-family: 'Noto Sans Malayalam', sans-serif;
-            transition: all 300ms ease;
-            margin-top: 24px;
-        }
-
-        .doodle-cta:hover {
-            background: var(--forest-green);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(45, 106, 79, 0.3);
-        }
-
-        @keyframes popIn {
-            from {
-                opacity: 0;
-                transform: scale(0) rotate(-20deg);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1) rotate(0);
-            }
-        }
-
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
         .footer {
             background: var(--primary-dark-green);
             color: var(--white);
@@ -704,6 +616,44 @@
             }
         }
 
+        @keyframes slideBackground {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 100px 0;
+            }
+        }
+
+        @keyframes fadeFlow {
+            0%, 100% {
+                opacity: 0.8;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shimmer {
+            0%, 100% {
+                opacity: 0.4;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+
         /* RESPONSIVE */
         @media (max-width: 1024px) {
             .hero {
@@ -722,14 +672,6 @@
 
             .section-header-title {
                 font-size: 2rem;
-            }
-
-            .doodle-title {
-                font-size: 1.6rem;
-            }
-
-            .doodles {
-                grid-template-columns: repeat(4, 1fr);
             }
         }
 
@@ -779,23 +721,6 @@
             .sections-container {
                 padding: 40px 16px;
             }
-
-            .doodle-title {
-                font-size: 1.4rem;
-            }
-
-            .doodles {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 16px;
-            }
-
-            .doodle {
-                font-size: 2.5rem;
-            }
-
-            .doodle-section {
-                padding: 60px 16px;
-            }
         }
 
         /* REDUCED MOTION */
@@ -825,9 +750,11 @@
 
 <!-- HERO -->
 <section class="hero">
+    <div class="hero-picture-bg"></div>
+    
     <div class="hero-left">
         <h1>സ്റ്റോരികളും<br>പഠനവും</h1>
-        <div class="hero-left-ml">പാലക്കാട് നിന്ന് ❤️</div>
+        <div class="hero-left-ml">പാലക്കാട് നിന്ന് 🌿</div>
         <p class="hero-subtitle">കുഞ്ഞുങ്ങളേ, ഞങ്ങൾ ഒരു ടീച്ചർ കപ്പിൾ. ഞങ്ങൾ ഫോട്ടോഗ്രാഫി, സൌജന്യ പരിശീലനം, സംഗീതം എന്നിവയിലൂടെ കമ്യൂണിറ്റി ഓഫ് ലണിംഗ് നിർമ്മിക്കുന്നു.</p>
         <p class="hero-subtitle-ml">ഞങ്ങളുടെ ഗൈൻ: എല്ലാവർക്കും ഉയർന്ന കോടിയുള്ള വിദ്യാഭ്യാസ എത്തിച്ച് കൊടുക്കുക.</p>
         <div class="hero-buttons">
@@ -919,34 +846,6 @@
     </div>
 </div>
 
-<!-- DOODLE SECTION -->
-<section class="doodle-section">
-    <div class="doodle-shapes">
-        <div class="shape circle" style="top: 10%; left: 10%;"></div>
-        <div class="shape square" style="top: 60%; right: 15%;"></div>
-        <div class="shape triangle" style="bottom: 20%; left: 5%;"></div>
-        <div class="shape circle" style="bottom: 10%; right: 10%;"></div>
-    </div>
-    
-    <div class="doodle-container">
-        <h2 class="doodle-title">കുറച്ച് സ്വാഭാവിക സ്വർണ്ണ</h2>
-        <p class="doodle-subtitle">സൃജനശീലതയെ നമ്മുടെ സമൂഹത്തിലേക്ക് കൊണ്ടെത്തുക</p>
-        
-        <div class="doodles">
-            <div class="doodle">📚</div>
-            <div class="doodle">🎨</div>
-            <div class="doodle">🌿</div>
-            <div class="doodle">🎵</div>
-            <div class="doodle">📸</div>
-            <div class="doodle">✏️</div>
-            <div class="doodle">🎭</div>
-            <div class="doodle">💚</div>
-        </div>
-        
-        <p style="color: var(--primary-dark-green); font-weight: 600; margin-bottom: 20px;">നമ്മുടെ കമ്യൂണിറ്റിയോട് ചേരാൻ സ്വാഗതം</p>
-        <a href="#about" class="doodle-cta">കൂടുതൽ കാണാം →</a>
-    </div>
-</section>
 
 <!-- FOOTER -->
 <footer class="footer">
@@ -974,7 +873,7 @@
         </div>
     </div>
     <div class="footer-bottom">
-        <p>© 2026 KuttyTeachers.in — പാലക്കാട്ടിൽ ❤️ ഉപ്പ്</p>
+        <p>© 2026 KuttyTeachers.in — പാലക്കാട്ടിൽ 🌱 നിർമ്മിതം</p>
     </div>
 </footer>
 
