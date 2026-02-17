@@ -1,245 +1,672 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ml">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ഞങ്ങളെക്കുറിച്ച് | KuttyTeachers About</title>
+    <meta name="description" content="കട്ടിടീച്ചേഴ്സിനെക്കുറിച്ച് - പാലക്കാടിലെ ഒരു അധ്യാപക ദമ്പതി, ഫോട്ടോഗ്രാഫി, പരിശീലനം, സംഗീതം, തോട്ടം">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;500;600;700;800&family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<title>About Us | KuttyTeachers</title>
+    <style>
+        :root {
+            /* Greenery palette - matching all pages */
+            --primary-dark-green: #1b4332;
+            --primary-green: #2d6a4f;
+            --forest-green: #40916c;
+            --leaf-green: #52b788;
+            --soft-mint: #95d5b2;
+            --pale-green: #d8f3dc;
+            --off-white: #f8f9f7;
+            --white: #ffffff;
+            --black: #0b1c0e;
+            
+            /* Text colors */
+            --light-text: #2d5a3d;
+            --accent-green: #40916c;
+        }
 
-<meta name="description" content="About KuttyTeachers — a teacher couple from Palakkad sharing photography, tutoring, music, and gardening.">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+        html {
+            scroll-behavior: smooth;
+        }
 
-<style>
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--off-white);
+            color: var(--light-text);
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
+        }
 
-:root{
---bg:#f8fafc;
---card:#ffffff;
---text:#0f172a;
---muted:#64748b;
---accent:#2E8B57;
---dark:#0f172a;
-}
+        /* HEADER - Matching all pages */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border-bottom: 2px solid var(--pale-green);
+            padding: 18px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(27, 67, 50, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
 
-*{
-box-sizing:border-box;
-}
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, 
+                rgba(45, 106, 79, 0.12) 0%,
+                rgba(45, 106, 79, 0.06) 25%,
+                rgba(82, 183, 136, 0.04) 50%,
+                rgba(45, 106, 79, 0.06) 75%,
+                rgba(45, 106, 79, 0.12) 100%);
+            pointer-events: none;
+            z-index: -1;
+            animation: fadeFlow 4s ease-in-out infinite;
+        }
 
-body{
-margin:0;
-font-family:'Inter',sans-serif;
-background:var(--bg);
-color:var(--text);
-}
+        .logo {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            position: relative;
+            z-index: 2;
+        }
 
+        .logo-english {
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary-dark-green);
+            letter-spacing: 1px;
+        }
 
-/* NAVBAR */
-.navbar{
-background:var(--dark);
-color:white;
-padding:18px 30px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
+        .logo-malayalam {
+            font-family: 'Noto Sans Malayalam', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--forest-green);
+        }
 
-.navbar a{
-color:white;
-text-decoration:none;
-margin-left:20px;
-}
+        .nav {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
 
-.navbar a:hover{
-color:#38bdf8;
-}
+        .nav-item {
+            font-family: 'Noto Sans Malayalam', sans-serif;
+            padding: 8px 14px;
+            text-decoration: none;
+            color: var(--light-text);
+            font-weight: 500;
+            border-radius: 6px;
+            transition: all 300ms ease;
+            font-size: 0.95rem;
+            position: relative;
+        }
 
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 14px;
+            right: 14px;
+            height: 2px;
+            background: var(--leaf-green);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 300ms ease;
+        }
 
-/* HERO */
-.hero{
+        .nav-item:hover::after {
+            transform: scaleX(1);
+        }
 
-background:
-linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-url("https://images.unsplash.com/photo-1496307653780-42ee777d4833?auto=format&fit=crop&w=1600&q=80");
+        .nav-item:hover {
+            background: var(--pale-green);
+        }
 
-background-size:cover;
-background-position:center;
+        .nav-item.active {
+            background: var(--primary-green);
+            color: var(--white);
+        }
 
-height:45vh;
+        .nav-item.active::after {
+            display: none;
+        }
 
-color:white;
+        /* HERO SECTION */
+        .hero {
+            margin-top: 80px;
+            padding: 80px 32px;
+            background: linear-gradient(135deg, var(--primary-dark-green) 0%, var(--forest-green) 50%, var(--primary-green) 100%);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: drift 8s ease-in-out infinite;
+            z-index: 0;
+        }
 
-text-align:center;
-padding:20px;
+        .hero::after {
+            content: '👨‍🏫👩‍🏫 💚 🌿';
+            position: absolute;
+            top: 50%;
+            right: 60px;
+            font-size: 4rem;
+            opacity: 0.15;
+            z-index: 1;
+            animation: float 6s ease-in-out infinite;
+            letter-spacing: 15px;
+        }
 
-}
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
 
-.hero h1{
-font-size:2.8rem;
-margin-bottom:10px;
-}
+        .hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 3.2rem;
+            margin-bottom: 16px;
+            font-weight: 800;
+            opacity: 0;
+            animation: slideInDown 700ms ease-out forwards;
+        }
 
-.hero p{
-max-width:600px;
-color:#e2e8f0;
-}
+        .hero-ml {
+            font-family: 'Noto Sans Malayalam', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            opacity: 0;
+            animation: slideInDown 700ms ease-out 150ms forwards;
+        }
 
+        .hero p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.95);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+            opacity: 0;
+            animation: slideInDown 700ms ease-out 300ms forwards;
+        }
 
-/* CONTENT */
-.container{
-max-width:900px;
-margin:-60px auto 40px auto;
-padding:20px;
-}
+        /* CONTENT SECTION */
+        .content-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 32px;
+        }
 
-.card{
-background:var(--card);
-padding:30px;
-border-radius:12px;
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
-margin-bottom:25px;
-}
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            margin-bottom: 40px;
+        }
 
-.card h2{
-margin-bottom:10px;
-}
+        .card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(27, 67, 50, 0.08);
+            transition: all 400ms ease;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 700ms ease-out forwards;
+            border-left: 5px solid var(--pale-green);
+            border-top: 3px solid var(--soft-mint);
+        }
 
-.card p{
-color:var(--muted);
-line-height:1.7;
-}
+        .card:nth-child(1) { animation-delay: 100ms; }
+        .card:nth-child(2) { animation-delay: 200ms; }
+        .card:nth-child(3) { animation-delay: 300ms; }
+        .card:nth-child(4) { animation-delay: 400ms; }
 
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(27, 67, 50, 0.15);
+            border-left-color: var(--forest-green);
+            border-top-color: var(--leaf-green);
+        }
 
-/* HIGHLIGHT */
-.highlight{
-background:#ecfdf5;
-border-left:5px solid var(--accent);
-padding:20px;
-border-radius:8px;
-margin-top:10px;
-}
+        .card h2 {
+            font-family: 'Noto Sans Malayalam', sans-serif;
+            font-size: 1.8rem;
+            color: var(--primary-dark-green);
+            margin-bottom: 20px;
+            font-weight: 800;
+            position: relative;
+            padding-bottom: 12px;
+        }
 
+        .card h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--leaf-green), var(--forest-green));
+            border-radius: 2px;
+        }
 
-/* FOOTER */
-.footer{
-text-align:center;
-padding:25px;
-background:var(--dark);
-color:#94a3b8;
-}
+        .card p {
+            color: var(--light-text);
+            line-height: 1.9;
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+        }
 
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
 
-</style>
+        .card li {
+            padding: 10px 0;
+            padding-left: 28px;
+            position: relative;
+            color: var(--light-text);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
 
+        .card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--leaf-green);
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        /* HIGHLIGHT BOX */
+        .highlight {
+            background: linear-gradient(135deg, var(--pale-green) 0%, var(--soft-mint) 100%);
+            border-left: 5px solid var(--forest-green);
+            padding: 28px;
+            border-radius: 8px;
+            margin: 28px 0;
+            color: var(--primary-dark-green);
+        }
+
+        .highlight h3 {
+            font-family: 'Noto Sans Malayalam', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+            color: var(--primary-dark-green);
+        }
+
+        .highlight p {
+            color: var(--light-text);
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        /* STORY SECTION */
+        .story-section {
+            background: linear-gradient(135deg, var(--pale-green) 0%, var(--soft-mint) 100%);
+            padding: 60px 32px;
+            border-radius: 10px;
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .story-section h2 {
+            font-family: 'Noto Sans Malayalam', sans-serif;
+            font-size: 2.2rem;
+            color: var(--primary-dark-green);
+            margin-bottom: 24px;
+            font-weight: 800;
+        }
+
+        .story-section p {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            line-height: 1.9;
+            max-width: 800px;
+            margin: 0 auto 16px;
+        }
+
+        .story-emoji {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--primary-dark-green);
+            color: var(--white);
+            padding: 60px 32px;
+            margin-top: 40px;
+        }
+
+        .footer-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-family: 'Noto Sans Malayalam', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .footer-col p, .footer-col a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            transition: all 300ms ease;
+        }
+
+        .footer-col a:hover {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* ANIMATIONS */
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes drift {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            33% {
+                transform: translate(30px, -30px);
+            }
+            66% {
+                transform: translate(-20px, 20px);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes fadeFlow {
+            0%, 100% {
+                opacity: 0.8;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .card h2 {
+                font-size: 1.5rem;
+            }
+
+            .story-section h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 14px 16px;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .logo-english {
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                margin-top: 70px;
+                padding: 40px 16px;
+                min-height: 400px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-ml {
+                font-size: 1.1rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero::after {
+                font-size: 2.5rem;
+                right: 20px;
+                letter-spacing: 8px;
+            }
+
+            .content-container {
+                padding: 40px 16px;
+            }
+
+            .card {
+                padding: 28px 20px;
+            }
+
+            .card h2 {
+                font-size: 1.3rem;
+            }
+
+            .story-section {
+                padding: 40px 20px;
+                margin: 40px 0;
+            }
+
+            .story-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .story-emoji {
+                font-size: 2rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        /* REDUCED MOTION */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+            }
+        }
+    </style>
 </head>
 <body>
 
-
-<!-- NAVBAR -->
-<div class="navbar">
-<div><strong>KuttyTeachers</strong></div>
-<div>
-<a href="index.html">Home</a>
-<a href="photography.html">Photography</a>
-<a href="tutoring.html">Tutoring</a>
-<a href="piano.html">Piano</a>
-<a href="gardening.html">Gardening</a>
-</div>
-</div>
-
+<!-- HEADER -->
+<header class="header">
+    <div class="logo">
+        <div class="logo-english">KuttyTeachers</div>
+        <div class="logo-malayalam">കട്ടിടീച്ചേഴ്സ്</div>
+    </div>
+    <nav class="nav">
+        <a href="index.html" class="nav-item">വീട്</a>
+        <a href="photography.html" class="nav-item">ഫോട്ടോ</a>
+        <a href="tutoring.html" class="nav-item">പഠനം</a>
+        <a href="piano.html" class="nav-item">സംഗീതം</a>
+        <a href="gardening.html" class="nav-item">തോട്ടം</a>
+        <a href="about.html" class="nav-item active">അറിയുക</a>
+    </nav>
+</header>
 
 <!-- HERO -->
-<div class="hero">
-
-<h1>About Us</h1>
-
-<p>
-A small initiative driven by passion for teaching, creativity, and community.
-</p>
-
-</div>
-
+<section class="hero">
+    <div class="hero-content">
+        <h1>ഞങ്ങളെക്കുറിച്ച്</h1>
+        <div class="hero-ml">കട്ടിടീച്ചേഴ്സിന്റെ കഥ</div>
+        <p>സൃജനശീലത, പരിശീലനം, കമ്യൂണിറ്റി എന്നിവയ്ക്കായുള്ള വികാരത്താൽ ഓടിക്കുന്ന ഒരു ചെറിയ ഉദ്യോഗം</p>
+    </div>
+</section>
 
 <!-- CONTENT -->
-<div class="container">
+<div class="content-container">
+    <div class="cards-grid">
+        <!-- CARD 1: Who We Are -->
+        <div class="card">
+            <h2>ഞങ്ങൾ ആരാണ്?</h2>
+            <p>കട്ടിടീച്ചേഴ്സ് കേരളത്തിലെ പാലക്കാടിൽ നിന്ന് ഒരു അധ്യാപക ദമ്പതിയുടെ വ്യക്തിഗത ഉദ്യോഗം. വിദ്യാഭ്യാസം, സൃജനശീലത, കൗതുകം എന്നിവ ജീവിതത്തിന്റെ അത്യാവശ്യ ഭാഗങ്ങളാണെന്ന് ഞങ്ങൾ വിശ്വസിക്കുന്നു.</p>
+            <p>ഈ പ്ലാറ്റ്ഫോമിലൂടെ, ഞങ്ങൾ ഫോട്ടോഗ്രാഫി പങ്കിടുകയും, സ്ഥാനിക വിദ്യാർത്ഥികൾക്കായി സൌജന്യ പരിശീലനം നൽകുകയും, പിയാനോയിലൂടെ സംഗീതം പര്യവേക്ഷണം ചെയ്യുകയും, നമ്മുടെ തോട്ടം ശ്രംഖല രേഖപ്പെടുത്തുകയും ചെയ്യുന്നു.</p>
+        </div>
 
+        <!-- CARD 2: Why We Started -->
+        <div class="card">
+            <h2>ഞങ്ങൾ എന്തിനായി ആരംഭിച്ചു?</h2>
+            <p>കട്ടിടീച്ചേഴ്സ് ഒരു ലളിതമായ ധാരണയായി ആരംഭിച്ചു — സ്വതന്ത്രമായി വിജ്ഞാനവും സൃജനശീലതയും പങ്കിടുക. പരിശീലനം നമ്മുടെ പേശാവകാശമല്ലെങ്കിലും, ഇത് മറ്റുള്ളവരെ പിന്തുണയ്ക്കാനും പ്രചോദിപ്പിക്കാനുമുള്ള ഒരു ബാധ്യതയാണ്.</p>
+            <div class="highlight">
+                <h3>🌱 ഞങ്ങളുടെ ലക്ഷ്യം</h3>
+                <p>ഞങ്ങൾ ഒരു ചെറിയ എന്നാൽ അർത്ഥവത്തായ പ്ലാറ്റ്ഫോം സൃഷ്ടിക്കാൻ ലക്ഷ്യം വയ്ക്കുന്നു, അത് വിദ്യാർത്ഥികളെ സഹായിക്കുകയും, കഥകൾ പങ്കിടുകയും, സൃജനശീലതയിലൂടെ ആളുകളുമായി ബന്ധപ്പെടുകയും ചെയ്യുന്നു.</p>
+            </div>
+        </div>
 
-<!-- WHO WE ARE -->
-<div class="card">
+        <!-- CARD 3: What You Will Find -->
+        <div class="card">
+            <h2>നിങ്ങൾ ഇവിടെ എന്താണ് കാണിക്കും?</h2>
+            <ul>
+                <li>സ്ഥാനിക സ്ഥലങ്ങളിൽ നിന്ന് ഫോട്ടോഗ്രാഫിയും ദൈനന്ദിന ജീവിതവും</li>
+                <li>സൌജന്യ പരിശീലനം പിന്തുണയും അക്കാദമിക് നിർദ്ദേശനവും</li>
+                <li>പിയാനോ സംഗീതവും സൃജനശീലമായ സൃഷ്ടികൾ</li>
+                <li>തോട്ടം അനുഭവങ്ങൾവും ആരോഗ്യ സംരക്ഷണം</li>
+                <li>കമ്യൂണിറ്റി പരിശീലനം ശ്രംഖലകളും സൌജന്യ വിജ്ഞാനം</li>
+            </ul>
+        </div>
 
-<h2>Who We Are</h2>
+        <!-- CARD 4: Vision -->
+        <div class="card">
+            <h2>ഞങ്ങളുടെ ദൃഷ്ടിവിഷയം</h2>
+            <p>ഞങ്ങൾ ഈ പ്ലാറ്റ്ഫോം സാവധാനം വളരാൻ ആഗ്രഹിക്കുന്നു. സോൽസ് ആയ വിധിയിൽ, ഞങ്ങളുടെ ലക്ഷ്യം ഒന്നുമല്ല സ്ഥലത്തെ വ്യാപിപ്പിക്കലാണ്, പക്ഷേ നമ്മുടെ കമ്യൂണിറ്റിക്കായി മൂല്യ സൃഷ്ടിക്കുകയും അർത്ഥവത്തായ നിമിഷങ്ങൾ സംരക്ഷിക്കുകയും ചെയ്യുക.</p>
+            <p>ഞങ്ങളുടെ കമ്യൂണിറ്റി പരിവാരത്തെ ബിൽ ചെയ്യാൻ, സൃജനശീലത പങ്കിടാൻ, സാധാരണ ജീവിതത്തിന്റെ സൌന്ദര്യം കണ്ടെത്താൻ ഞങ്ങൾ കാത്തിരിക്കുന്നു.</p>
+        </div>
+    </div>
 
-<p>
-KuttyTeachers is a personal initiative by a husband and wife teaching team based in Palakkad, Kerala. We believe that education, creativity, and curiosity are essential parts of life.
-</p>
-
-<p>
-Through this platform, we share photography, provide free tutoring to local students, explore music through piano, and document our gardening journey.
-</p>
-
+    <!-- STORY SECTION -->
+    <div class="story-section">
+        <div class="story-emoji">👨‍🏫👩‍🏫</div>
+        <h2>ഒരു അധ്യാപക ദമ്പതിയുടെ സാഹസിക യാത്ര</h2>
+        <p>ഞങ്ങൾ സ്കൂളിലെ കുറേ സംവത്സരങ്ങൾ കോളിയും, വിദ്യാർത്ഥികൾക്കൊരുമിച്ച് ശിഖരത്തിൽ എത്തിയും. അക്കാദമിക് സാഫല്യത്തിനേറ്റെ പലതും, ഞങ്ങൾ സൃജനശീലതവും സാധാരണ അനുഭവങ്ങളിൽ വിശ്വാസ ചെയ്യാൻ തുടങ്ങി.</p>
+        <p>ഈ വിശ്വാസ കട്ടിടീച്ചേഴ്സ്ി ജന്മം നൽകി — ഒരു സ്ഥാനം എവിടെ പരിശീലനം കേവലം പരിശീലനമല്ലാണ്, കൂടാതെ സൃജനശീലത നിർത്തണ്ടിതമാണ്, സംസ്കാരം മൂല്യവത്താണ്.</p>
+    </div>
 </div>
-
-
-<!-- WHY WE STARTED -->
-<div class="card">
-
-<h2>Why We Started</h2>
-
-<p>
-KuttyTeachers began as a simple idea — to share knowledge and creativity freely. Teaching is not only a profession for us but also a responsibility to support and inspire others.
-</p>
-
-<div class="highlight">
-
-Our goal is to create a small but meaningful platform that helps students, shares stories, and connects with people through creativity.
-
-</div>
-
-</div>
-
-
-<!-- WHAT YOU WILL FIND -->
-<div class="card">
-
-<h2>What You Will Find Here</h2>
-
-<p>
-• Photography from local places and daily life<br>
-• Free tutoring support and educational guidance<br>
-• Piano music and creative works<br>
-• Gardening experiences and plant care
-</p>
-
-</div>
-
-
-<!-- VISION -->
-<div class="card">
-
-<h2>Our Vision</h2>
-
-<p>
-We hope to grow this platform slowly and honestly. Our aim is not just to share content but to create value for our community and preserve meaningful moments.
-</p>
-
-</div>
-
-
-</div>
-
 
 <!-- FOOTER -->
-<div class="footer">
-
-© 2026 KuttyTeachers.in — Built with Purpose in Palakkad
-
-</div>
-
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-col">
+            <h4>കട്ടിടീച്ചേഴ്സ് സംരംഭം</h4>
+            <p>പാലക്കാടിലെ ഒരു അധ്യാപക ദമ്പതി, പരിശീലനം, സൃജനശീലത, കമ്യൂണിറ്റി എന്നിവയ്ക്കായുള്ള വികാരത്താൽ.</p>
+        </div>
+        <div class="footer-col">
+            <h4>സേവനങ്ങൾ</h4>
+            <p><a href="index.html">വീട്</a></p>
+            <p><a href="photography.html">ഫോട്ടോഗ്രാഫി</a></p>
+            <p><a href="tutoring.html">പരിശീലനം</a></p>
+            <p><a href="piano.html">സംഗീതം</a></p>
+            <p><a href="gardening.html">തോട്ടം</a></p>
+        </div>
+        <div class="footer-col">
+            <h4>സമ്പർക്കം</h4>
+            <p>ഇമെയിൽ: contact@kuttyteachers.in</p>
+            <p>സ്ഥലം: പാലക്കാട്, കേരളം 🌿</p>
+        </div>
+        <div class="footer-col">
+            <h4>കൂടുതലറിയാൻ</h4>
+            <p><a href="#">സാമൂഹിക മാധ്യമം</a></p>
+            <p><a href="#">പതിവായ ചോദ്യങ്ങൾ</a></p>
+            <p><a href="#">സ്പർശിക്കുക</a></p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 KuttyTeachers.in — പാലക്കാട്ടിൽ 🌱 നിർമ്മിതം</p>
+    </div>
+</footer>
 
 </body>
 </html>
