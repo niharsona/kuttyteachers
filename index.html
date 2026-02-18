@@ -8,9 +8,11 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;500;600;700;800&family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- kutty-extras.css — loader + hamburger styles -->
+    <link rel="stylesheet" href="kutty-extras.css">
+
     <style>
         :root {
-            /* Greenery palette - natural & calm */
             --primary-dark-green: #1b4332;
             --primary-green: #2d6a4f;
             --forest-green: #40916c;
@@ -20,12 +22,8 @@
             --off-white: #f8f9f7;
             --white: #ffffff;
             --black: #0b1c0e;
-            
-            /* Text colors */
             --light-text: #2d5a3d;
             --accent-green: #40916c;
-            
-            /* Functional colors */
             --success: #52b788;
             --info: #40916c;
         }
@@ -48,7 +46,7 @@
             line-height: 1.6;
         }
 
-        /* HEADER - Minimalist top bar */
+        /* HEADER */
         .header {
             position: fixed;
             top: 0;
@@ -62,7 +60,6 @@
             align-items: center;
             z-index: 100;
             box-shadow: 0 2px 8px rgba(27, 67, 50, 0.08);
-            position: relative;
             overflow: hidden;
         }
 
@@ -160,7 +157,7 @@
             box-shadow: 0 4px 12px rgba(45, 106, 79, 0.3);
         }
 
-        /* HERO SECTION - New approach */
+        /* HERO SECTION */
         .hero {
             margin-top: 80px;
             padding: 80px 32px;
@@ -335,17 +332,9 @@
             animation: slideInRight 700ms ease-out forwards;
         }
 
-        .feature-box:nth-child(1) {
-            animation-delay: 200ms;
-        }
-
-        .feature-box:nth-child(2) {
-            animation-delay: 350ms;
-        }
-
-        .feature-box:nth-child(3) {
-            animation-delay: 500ms;
-        }
+        .feature-box:nth-child(1) { animation-delay: 200ms; }
+        .feature-box:nth-child(2) { animation-delay: 350ms; }
+        .feature-box:nth-child(3) { animation-delay: 500ms; }
 
         .feature-box-num {
             font-family: 'Syne', sans-serif;
@@ -369,7 +358,7 @@
             color: var(--light-text);
         }
 
-        /* SECTION - Content blocks */
+        /* SECTIONS */
         .sections-container {
             max-width: 1300px;
             margin: 0 auto;
@@ -405,7 +394,6 @@
             margin: 0 auto;
         }
 
-        /* GRID SECTIONS */
         .grid-4 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -475,7 +463,6 @@
             color: var(--white);
         }
 
-        /* TWO COLUMN SECTION */
         .two-column {
             background: var(--white);
             padding: 60px 32px;
@@ -527,7 +514,7 @@
             animation: float 4s ease-in-out infinite;
         }
 
-
+        /* FOOTER */
         .footer {
             background: var(--primary-dark-green);
             color: var(--white);
@@ -574,84 +561,39 @@
 
         /* ANIMATIONS */
         @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(-40px); }
+            to   { opacity: 1; transform: translateX(0); }
         }
 
         @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(40px); }
+            to   { opacity: 1; transform: translateX(0); }
         }
 
         @keyframes drift {
-            0%, 100% {
-                transform: translate(0, 0);
-            }
-            33% {
-                transform: translate(30px, -30px);
-            }
-            66% {
-                transform: translate(-20px, 20px);
-            }
+            0%, 100% { transform: translate(0, 0); }
+            33%       { transform: translate(30px, -30px); }
+            66%       { transform: translate(-20px, 20px); }
         }
 
         @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        @keyframes slideBackground {
-            0% {
-                background-position: 0 0;
-            }
-            100% {
-                background-position: 100px 0;
-            }
+            0%, 100% { transform: translateY(0px); }
+            50%       { transform: translateY(-10px); }
         }
 
         @keyframes fadeFlow {
-            0%, 100% {
-                opacity: 0.8;
-            }
-            50% {
-                opacity: 1;
-            }
+            0%, 100% { opacity: 0.8; }
+            50%       { opacity: 1; }
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes shimmer {
-            0%, 100% {
-                opacity: 0.4;
-            }
-            50% {
-                opacity: 0.8;
-            }
+            0%, 100% { opacity: 0.4; }
+            50%       { opacity: 0.8; }
         }
 
         /* RESPONSIVE */
@@ -723,192 +665,224 @@
             }
         }
 
-        /* REDUCED MOTION */
         @media (prefers-reduced-motion: reduce) {
-            * {
-                animation: none !important;
-            }
+            * { animation: none !important; }
         }
     </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="header">
-    <div class="logo">
-        <div class="logo-english">KuttyTeachers</div>
-        <div class="logo-malayalam">കട്ടിടീച്ചേഴ്സ്</div>
+    <!-- =====================================================
+         KUTTY-EXTRAS: Paste this block right after <body>
+         on every page. kutty-extras.css + kutty-extras.js
+         do all the work automatically.
+         ===================================================== -->
+
+    <!-- Loading screen -->
+    <div id="kt-loader">
+        <div class="kt-loader-leaf">🌿</div>
+        <div class="kt-loader-logo">KuttyTeachers</div>
+        <div class="kt-loader-logo-ml">കട്ടിടീച്ചേഴ്സ്</div>
+        <div class="kt-loader-track">
+            <div class="kt-loader-fill"></div>
+        </div>
     </div>
-    <nav class="nav">
-        <a href="photography.html" class="nav-item">ഫോട്ടോ</a>
-        <a href="tutoring.html" class="nav-item">പഠനം</a>
-        <a href="piano.html" class="nav-item">സംഗീതം</a>
-        <a href="gardening.html" class="nav-item">തോട്ടം</a>
-        <a href="about.html" class="nav-item cta-btn">അറിയുക</a>
+
+    <!-- Dark overlay behind mobile nav drawer -->
+    <div id="kt-overlay"></div>
+
+    <!-- Mobile nav drawer -->
+    <nav id="kt-mobile-nav">
+        <a href="photography.html">📸 ഫോട്ടോ</a>
+        <a href="tutoring.html">📚 പഠനം</a>
+        <a href="piano.html">🎹 സംഗീതം</a>
+        <a href="gardening.html">🌿 തോട്ടം</a>
+        <a href="about.html" class="kt-cta">അറിയുക</a>
     </nav>
-</header>
 
-<!-- HERO -->
-<section class="hero">
-    <div class="hero-picture-bg"></div>
-    
-    <div class="hero-left">
-        <h1>സ്റ്റോരികളും<br>പഠനവും</h1>
-        <div class="hero-left-ml">പാലക്കാട് നിന്ന് 🌿</div>
-        <p class="hero-subtitle">കുഞ്ഞുങ്ങളേ, ഞങ്ങൾ ഒരു ടീച്ചർ കപ്പിൾ. ഞങ്ങൾ ഫോട്ടോഗ്രാഫി, സൌജന്യ പരിശീലനം, സംഗീതം എന്നിവയിലൂടെ കമ്യൂണിറ്റി ഓഫ് ലണിംഗ് നിർമ്മിക്കുന്നു.</p>
-        <p class="hero-subtitle-ml">ഞങ്ങളുടെ ഗൈൻ: എല്ലാവർക്കും ഉയർന്ന കോടിയുള്ള വിദ്യാഭ്യാസ എത്തിച്ച് കൊടുക്കുക.</p>
-        <div class="hero-buttons">
-            <a href="tutoring.html" class="btn-primary">സൌജന്യ പരിശീലനം</a>
-            <a href="photography.html" class="btn-secondary">ഫോട്ടോ കാണാം</a>
+    <!-- ===================================================== -->
+
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo">
+            <div class="logo-english">KuttyTeachers</div>
+            <div class="logo-malayalam">കട്ടിടീച്ചേഴ്സ്</div>
         </div>
-    </div>
+        <nav class="nav">
+            <a href="photography.html" class="nav-item">ഫോട്ടോ</a>
+            <a href="tutoring.html" class="nav-item">പഠനം</a>
+            <a href="piano.html" class="nav-item">സംഗീതം</a>
+            <a href="gardening.html" class="nav-item">തോട്ടം</a>
+            <a href="about.html" class="nav-item cta-btn">അറിയുക</a>
+        </nav>
+        <!-- Hamburger button — kutty-extras.css shows this only on mobile -->
+        <button id="kt-hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
 
-    <div class="hero-right">
-        <div class="feature-boxes">
-            <div class="feature-box">
-                <div class="feature-box-num">04</div>
-                <div class="feature-box-title">സേവനങ്ങൾ</div>
-                <div class="feature-box-desc">ഫോട്ടോ, പഠനം, സംഗീതം, തോട്ടം</div>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-picture-bg"></div>
+        
+        <div class="hero-left">
+            <h1>സ്റ്റോരികളും<br>പഠനവും</h1>
+            <div class="hero-left-ml">പാലക്കാട് നിന്ന് 🌿</div>
+            <p class="hero-subtitle">കുഞ്ഞുങ്ങളേ, ഞങ്ങൾ ഒരു ടീച്ചർ കപ്പിൾ. ഞങ്ങൾ ഫോട്ടോഗ്രാഫി, സൌജന്യ പരിശീലനം, സംഗീതം എന്നിവയിലൂടെ കമ്യൂണിറ്റി ഓഫ് ലണിംഗ് നിർമ്മിക്കുന്നു.</p>
+            <p class="hero-subtitle-ml">ഞങ്ങളുടെ ഗൈൻ: എല്ലാവർക്കും ഉയർന്ന കോടിയുള്ള വിദ്യാഭ്യാസ എത്തിച്ച് കൊടുക്കുക.</p>
+            <div class="hero-buttons">
+                <a href="tutoring.html" class="btn-primary">സൌജന്യ പരിശീലനം</a>
+                <a href="photography.html" class="btn-secondary">ഫോട്ടോ കാണാം</a>
             </div>
-            <div class="feature-box">
-                <div class="feature-box-num">∞</div>
-                <div class="feature-box-title">സൌജന്യം</div>
-                <div class="feature-box-desc">നിങ്ങൾ പണം കൊടുക്കേണ്ടതില്ല</div>
+        </div>
+
+        <div class="hero-right">
+            <div class="feature-boxes">
+                <div class="feature-box">
+                    <div class="feature-box-num">04</div>
+                    <div class="feature-box-title">സേവനങ്ങൾ</div>
+                    <div class="feature-box-desc">ഫോട്ടോ, പഠനം, സംഗീതം, തോട്ടം</div>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-box-num">∞</div>
+                    <div class="feature-box-title">സൌജന്യം</div>
+                    <div class="feature-box-desc">നിങ്ങൾ പണം കൊടുക്കേണ്ടതില്ല</div>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-box-num">1</div>
+                    <div class="feature-box-title">കമ്യൂണിറ്റി</div>
+                    <div class="feature-box-desc">പാലക്കാട്ടിലെ കുട്ടികൾക്കായി</div>
+                </div>
             </div>
-            <div class="feature-box">
-                <div class="feature-box-num">1</div>
-                <div class="feature-box-title">കമ്യൂണിറ്റി</div>
-                <div class="feature-box-desc">പാലക്കാട്ടിലെ കുട്ടികൾക്കായി</div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <div class="sections-container">
+        <div class="section-header">
+            <div class="section-header-num">നമ്മുടെ സേവനങ്ങൾ</div>
+            <h2 class="section-header-title">എന്തൊക്കെ ചെയ്യാം?</h2>
+            <p class="section-header-subtitle">സൃജനശീലതയും പഠനവും ഒരുമിച്ച് കണ്ടെത്തുക</p>
+        </div>
+
+        <div class="grid-4">
+            <div class="card-item reveal">
+                <div class="card-emoji">📸</div>
+                <h3>ഫോട്ടോഗ്രാഫി</h3>
+                <p>പാലക്കാട്ടിലെ സ്ഥാനിക കഥകൾ. നമ്മുടെ കൃതികൾ കണ്ടെത്തുക.</p>
+                <a href="photography.html" class="card-btn">കാണാം →</a>
+            </div>
+
+            <div class="card-item reveal">
+                <div class="card-emoji">📚</div>
+                <h3>പരിശീലനം</h3>
+                <p>സൌജന്യ പരിശീലനം പാലക്കാട്ടിലെ കുട്ടികൾക്കായി. നമുക്കൊരുമിച്ച് പഠിക്കാം.</p>
+                <a href="tutoring.html" class="card-btn">ചേരാം →</a>
+            </div>
+
+            <div class="card-item reveal">
+                <div class="card-emoji">🎹</div>
+                <h3>സംഗീതം</h3>
+                <p>പിയാനോ കൃതികൾ, കവർ, ബാൻഗ്‌ലാ സംഗീതം. ട്യൂട്ടോറിയൽ വരുന്നു.</p>
+                <a href="piano.html" class="card-btn">കേൾക്കാം →</a>
+            </div>
+
+            <div class="card-item reveal">
+                <div class="card-emoji">🌿</div>
+                <h3>തോട്ടം</h3>
+                <p>നമ്മുടെ വീട്ടിലെ തോട്ടത്തിൽ ചെടികൾ വളരുന്നു. നമ്മുക്ക് ഒരുമിച്ച് പഠിക്കാം.</p>
+                <a href="gardening.html" class="card-btn">കാണാം →</a>
             </div>
         </div>
     </div>
-</section>
 
-<!-- SERVICES SECTION -->
-<div class="sections-container">
-    <div class="section-header">
-        <div class="section-header-num">നമ്മുടെ സേവനങ്ങൾ</div>
-        <h2 class="section-header-title">എന്തൊക്കെ ചെയ്യാം?</h2>
-        <p class="section-header-subtitle">സൃജനശീലതയും പഠനവും ഒരുമിച്ച് കണ്ടെത്തുക</p>
-    </div>
-
-    <div class="grid-4">
-        <div class="card-item reveal">
-            <div class="card-emoji">📸</div>
-            <h3>ഫോട്ടോഗ്രാഫി</h3>
-            <p>പാലക്കാട്ടിലെ സ്ഥാനിക കഥകൾ. നമ്മുടെ കൃതികൾ കണ്ടെത്തുക.</p>
-            <a href="photography.html" class="card-btn">കാണാം →</a>
+    <!-- ABOUT SECTION -->
+    <div class="sections-container">
+        <div class="two-column">
+            <div class="two-column-content">
+                <h3>നമ്മെ പരിചയിപ്പിക്കാം</h3>
+                <h2>നമ്മൾ ആരാണ്?</h2>
+                <p>ഞങ്ങൾ പാലക്കാട്ടിലെ ഒരു അധ്യാപക ദമ്പതി. സ്കൂളിലെ അനുഭവങ്ങൾ, സൃജനശീലതയും സാധാരണ ജീവിതവും നമ്മുടെ കമ്യൂണിറ്റിയുമായി പങ്കിടാൻ നമ്മൾ സ്നേഹിക്കുന്നു.</p>
+                <p>ഈ യോജനയിലൂടെ വിദ്യാഭ്യാസം സാധാരണ മനുഷ്യനുങ്കലേക്ക് കൊണ്ടെത്താൻ ഞങ്ങൾ ആഗ്രഹിക്കുന്നു.</p>
+            </div>
+            <div class="two-column-image">👨‍🏫👩‍🏫</div>
         </div>
 
-        <div class="card-item reveal">
-            <div class="card-emoji">📚</div>
-            <h3>പരിശീലനം</h3>
-            <p>സൌജന്യ പരിശീലനം പാലക്കാട്ടിലെ കുട്ടികൾക്കായി. നമുക്കൊരുമിച്ച് പഠിക്കാം.</p>
-            <a href="tutoring.html" class="card-btn">ചേരാം →</a>
-        </div>
-
-        <div class="card-item reveal">
-            <div class="card-emoji">🎹</div>
-            <h3>സംഗീതം</h3>
-            <p>പിയാനോ കൃതികൾ, കവർ, ബാൻഗ്‌ലാ സംഗീതം. ട്യൂട്ടോറിയൽ വരുന്നു.</p>
-            <a href="piano.html" class="card-btn">കേൾക്കാം →</a>
-        </div>
-
-        <div class="card-item reveal">
-            <div class="card-emoji">🌿</div>
-            <h3>തോട്ടം</h3>
-            <p>നമ്മുടെ വീട്ടിലെ തോട്ടത്തിൽ ചെടികൾ വളരുന്നു. നമ്മുക്ക് ഒരുമിച്ച് പഠിക്കാം.</p>
-            <a href="gardening.html" class="card-btn">കാണാം →</a>
+        <div class="two-column alt">
+            <div class="two-column-image">🎯</div>
+            <div class="two-column-content">
+                <h3>നമ്മുടെ ലക്ഷ്യം</h3>
+                <h2>എന്തിനായി?</h2>
+                <p>വിദ്യാഭ്യാസം നിർബന്ധിത ആണെങ്കിലും എല്ലാവർക്കും സാധ്യമാകണം. പാലക്കാടിലെ കുട്ടികൾ നിങ്ങളുടെ പരിശീലനം സ്വതന്ത്രമായി കഴിയണം.</p>
+                <p>ഫോട്ടോഗ്രാഫി ലോകത്തെ കുറിപ്പ് കണ്ടെത്തുതും സ്വാഭാവിക ജീവിതം നിരവധി വിധങ്ങളായും ഞങ്ങൾ പരിചയപ്പെടാൻ ആഗ്രഹിക്കുന്നു.</p>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- ABOUT SECTION -->
-<div class="sections-container">
-    <div class="two-column">
-        <div class="two-column-content">
-            <h3>നമ്മെ പരിചയിപ്പിക്കാം</h3>
-            <h2>നമ്മൾ ആരാണ്?</h2>
-            <p>ഞങ്ങൾ പാലക്കാട്ടിലെ ഒരു അധ്യാപക ദമ്പതി. സ്കൂളിലെ അനുഭവങ്ങൾ, സൃജനശീലതയും സാധാരണ ജീവിതവും നമ്മുടെ കമ്യൂണിറ്റിയുമായി പങ്കിടാൻ നമ്മൾ സ്നേഹിക്കുന്നു.</p>
-            <p>ഈ യോജനയിലൂടെ വിദ്യാഭ്യാസം സാധാരണ മനുഷ്യനുങ്കലേക്ക് കൊണ്ടെത്താൻ ഞങ്ങൾ ആഗ്രഹിക്കുന്നു.</p>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>കട്ടിടീച്ചേഴ്സ്</h4>
+                <p>പാലക്കാട്ടിലെ ഒരു അധ്യാപക കപ്പിൾ, വിദ്യാഭ്യാസവും സൃജനശീലതാ ഓഫ് ലണിംഗ് നൽകി.</p>
+            </div>
+            <div class="footer-col">
+                <h4>സേവനങ്ങൾ</h4>
+                <p><a href="photography.html">ഫോട്ടോഗ്രാഫി</a></p>
+                <p><a href="tutoring.html">പരിശീലനം</a></p>
+                <p><a href="piano.html">സംഗീതം</a></p>
+                <p><a href="gardening.html">തോട്ടം</a></p>
+            </div>
+            <div class="footer-col">
+                <h4>സമ്പർക്കം</h4>
+                <p>ഇമെയിൽ: contact@kuttyteachers.in</p>
+                <p>സ്ഥലം: പാലക്കാട്, കേരളം 🏠</p>
+            </div>
+            <div class="footer-col">
+                <h4>കൂടുതൽ</h4>
+                <p><a href="#">വിസ്ആർ പരിചയ</a></p>
+                <p><a href="#">നേരിട്ടുള്ള വിഷയങ്ങൾ</a></p>
+            </div>
         </div>
-        <div class="two-column-image">👨‍🏫👩‍🏫</div>
-    </div>
+        <div class="footer-bottom">
+            <p>© 2026 KuttyTeachers.in — പാലക്കാട്ടിൽ 🌱 നിർമ്മിതം</p>
+        </div>
+    </footer>
 
-    <div class="two-column alt">
-        <div class="two-column-image">🎯</div>
-        <div class="two-column-content">
-            <h3>നമ്മുടെ ലക്ഷ്യം</h3>
-            <h2>എന്തിനായി?</h2>
-            <p>വിദ്യാഭ്യാസം നിർബന്ധിത ആണെങ്കിലും എല്ലാവർക്കും സാധ്യമാകണം. പാലക്കാടിലെ കുട്ടികൾ നിങ്ങളുടെ പരിശീലനം സ്വതന്ത്രമായി കഴിയണം.</p>
-            <p>ഫോട്ടോഗ്രാഫി ലോകത്തെ കുറിപ്പ് കണ്ടെത്തുതും സ്വാഭാവിക ജീവിതം നിരവധി വിധങ്ങളായും ഞങ്ങൾ പരിചയപ്പെടാൻ ആഗ്രഹിക്കുന്നു.</p>
-        </div>
-    </div>
-</div>
+    <!-- JAVASCRIPT -->
+    <script>
+        // Reveal cards on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
 
+        document.querySelectorAll('.card-item.reveal').forEach(el => observer.observe(el));
 
-<!-- FOOTER -->
-<footer class="footer">
-    <div class="footer-container">
-        <div class="footer-col">
-            <h4>കട്ടിടീച്ചേഴ്സ്</h4>
-            <p>പാലക്കാട്ടിലെ ഒരു അധ്യാപക കപ്പിൾ, വിദ്യാഭ്യാസവും സൃജനശീലതാ ഓഫ് ലണിംഗ് നൽകി.</p>
-        </div>
-        <div class="footer-col">
-            <h4>സേവനങ്ങൾ</h4>
-            <p><a href="photography.html">ഫോട്ടോഗ്രാഫി</a></p>
-            <p><a href="tutoring.html">പരിശീലനം</a></p>
-            <p><a href="piano.html">സംഗീതം</a></p>
-            <p><a href="gardening.html">തോട്ടം</a></p>
-        </div>
-        <div class="footer-col">
-            <h4>സമ്പർക്കം</h4>
-            <p>ഇമെയിൽ: contact@kuttyteachers.in</p>
-            <p>സ്ഥലം: പാലക്കാട്, കേരളം 🏠</p>
-        </div>
-        <div class="footer-col">
-            <h4>കൂടുതൽ</h4>
-            <p><a href="#">വിസ്ആർ പരിചയ</a></p>
-            <p><a href="#">നേരിട്ടുള്ള വിഷയങ്ങൾ</a></p>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>© 2026 KuttyTeachers.in — പാലക്കാട്ടിൽ 🌱 നിർമ്മിതം</p>
-    </div>
-</footer>
-
-<!-- JAVASCRIPT -->
-<script>
-    // Reveal cards on scroll
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('show');
-                observer.unobserve(entry.target);
-            }
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
         });
-    }, { threshold: 0.15 });
 
-    document.querySelectorAll('.card-item.reveal').forEach(el => observer.observe(el));
+        // Reduced motion support
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.querySelectorAll('*').forEach(el => el.style.animation = 'none');
+        }
+    </script>
 
-    // Smooth scroll for nav links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-    });
-
-    // Reduced motion support
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        document.querySelectorAll('*').forEach(el => {
-            el.style.animation = 'none';
-        });
-    }
-</script>
+    <!-- kutty-extras.js — handles loader hide + hamburger toggle -->
+    <script src="kutty-extras.js" defer></script>
 
 </body>
 </html>
